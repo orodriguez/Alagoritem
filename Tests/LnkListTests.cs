@@ -45,4 +45,25 @@ public class LnkListTests
         
         Assert.Equal(new[] { 10, 30, 40 }, l.ToArray());
     }
+
+    [Fact]
+    public void Prepend()
+    {
+        var l = new LnkList();
+        
+        l.Prepend(55);
+        
+        Assert.Equal(new[] { 55 }, l.ToArray());
+    }
+    
+    [Fact]
+    public void Prepend_OneElement()
+    {
+        var l = new LnkList();
+        
+        l.Prepend(55);
+        l.Prepend(77);
+        
+        Assert.Equal(new[] { 77, 55 }, l.ToArray());
+    }
 }

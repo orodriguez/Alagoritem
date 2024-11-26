@@ -12,6 +12,19 @@ public class LnkList
             Add(value);
     }
 
+    // O(1)
+    public void Prepend(int value)
+    {
+        if (_head == null)
+        {
+            _head = new LnkListNode(value);
+            return;
+        }
+
+        _head = new LnkListNode(value, _head);
+    }
+
+    // O(n)
     public void Add(int value)
     {
         if (_head == null)

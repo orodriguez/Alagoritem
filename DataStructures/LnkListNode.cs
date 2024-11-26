@@ -5,14 +5,15 @@ internal class LnkListNode
     private int Value { get; }
     private LnkListNode? Next { get; set; }
     
-    public LnkListNode(int value)
+    public LnkListNode(int value, LnkListNode? next = null)
     {
         Value = value;
-        Next = null;
+        Next = next;
     }
     
     public void Add(int value)
     {
+        // O(n)
         var current = this;
         while (current.Next != null) 
             current = current.Next;
