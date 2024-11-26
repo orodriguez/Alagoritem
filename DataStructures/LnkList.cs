@@ -44,6 +44,16 @@ public class LnkList
         _last = node;
     }
 
+    public void Insert(int index, int value)
+    {
+        throw new NotImplementedException();
+    }
+
     public IEnumerable<int> ToArray() => 
         _head == null ? Array.Empty<int>() : _head.ToArray();
+
+    public int[] ToReversedArray()
+    {
+        throw new NotImplementedException();
+    }
 }
