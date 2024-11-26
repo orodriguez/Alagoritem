@@ -1,6 +1,6 @@
 namespace DataStructures;
 
-public class LnkListNode
+internal class LnkListNode
 {
     private int Value { get; }
     private LnkListNode? Next { get; set; }
