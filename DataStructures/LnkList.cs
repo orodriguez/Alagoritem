@@ -3,8 +3,13 @@ namespace DataStructures;
 public class LnkList
 {
     private LnkListNode? _head;
+    private LnkListNode? _last;
 
-    public LnkList() => _head = null;
+    public LnkList()
+    {
+        _head = null;
+        _last = null;
+    }
 
     public LnkList(params int[] values)
     {
@@ -17,23 +22,26 @@ public class LnkList
     {
         if (_head == null)
         {
-            _head = new LnkListNode(value);
+            _head = _last =  new LnkListNode(value);
             return;
         }
 
         _head = new LnkListNode(value, _head);
     }
 
-    // O(n)
+    // O(1)
     public void Add(int value)
     {
         if (_head == null)
         {
-            _head = new LnkListNode(value);
+            _head = _last =  new LnkListNode(value);
             return;
         }
-        
-        _head.Add(value);
+
+        var node = new LnkListNode(value);
+        node.Previous = _last;
+        _last!.Next = node;
+        _last = node;
     }
 
     public IEnumerable<int> ToArray() => 

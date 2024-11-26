@@ -3,24 +3,16 @@ namespace DataStructures;
 internal class LnkListNode
 {
     private int Value { get; }
-    private LnkListNode? Next { get; set; }
+    public LnkListNode? Next { get; set; }
+    public LnkListNode? Previous { get; set; }
     
-    public LnkListNode(int value, LnkListNode? next = null)
+    public LnkListNode(int value, LnkListNode? next = null, LnkListNode? previous = null)
     {
         Value = value;
         Next = next;
+        Previous = previous;
     }
     
-    public void Add(int value)
-    {
-        // O(n)
-        var current = this;
-        while (current.Next != null) 
-            current = current.Next;
-
-        current.Next = new LnkListNode(value);
-    }
-
     public int[] ToArray()
     {
         var result = new List<int>();
