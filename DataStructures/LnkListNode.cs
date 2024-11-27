@@ -2,7 +2,7 @@ namespace DataStructures;
 
 internal class LnkListNode
 {
-    private int Value { get; }
+    public int Value { get; }
     public LnkListNode? Next { get; set; }
     public LnkListNode? Previous { get; set; }
     
