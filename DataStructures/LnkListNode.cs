@@ -30,4 +30,17 @@ internal class LnkListNode
         Next = node;
         node.Previous = this;
     }
+
+    public int[] ToReversedArray()
+    {
+        var result = new List<int>();
+        var current = this;
+        while (current != null)
+        {
+            result.Add(current.Value);
+            current = current.Previous;
+        }
+        
+        return result.ToArray();
+    }
 }

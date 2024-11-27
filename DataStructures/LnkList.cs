@@ -85,8 +85,6 @@ public class LnkList
     public IEnumerable<int> ToArray() => 
         _head == null ? Array.Empty<int>() : _head.ToArray();
 
-    public int[] ToReversedArray()
-    {
-        throw new NotImplementedException();
-    }
+    public int[] ToReversedArray() => 
+        _last == null ? Array.Empty<int>() : _last.ToReversedArray();
 }
