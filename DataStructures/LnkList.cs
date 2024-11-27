@@ -46,15 +46,25 @@ public class LnkList
 
     public void Insert(int index, int value)
     {
-        //Insert Empty
+        if (index < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index));
+        }
+
         if (_head == null)
         {
-            _head = new LnkListNode(value);
-            _last = _head;
+            if (index == 0)
+            {
+                _head = new LnkListNode(value);
+                _last = _head;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
         }
         else if (index == 0)
         {
-            //Insert One
             var node = new LnkListNode(value);
             node.Next = _head;
             _head = node;
@@ -62,22 +72,30 @@ public class LnkList
         else
         {
             var node = new LnkListNode(value);
-            LnkListNode c = _head;
+            LnkListNode current = _head;
             int i = 0;
-            
-            while (i < index - 1)
+
+            while (i < index - 1 && current.Next != null)
             {
-                c = c.Next;
-                i += 1;
-                
+                current = current.Next;
+                i++;
             }
 
-            node.Next = c.Next;
-            c.Next = node;
-            
+            if (i < index - 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+
+            node.Next = current.Next;
+            current.Next = node;
+
+            if (node.Next == null)
+            {
+                _last = node;
+            }
         }
-        
     }
+
     
     
 
@@ -86,6 +104,14 @@ public class LnkList
 
     public int[] ToReversedArray()
     {
-        return [];
+
+        var node = new List<int>();
+        var current = _last;
+        while (current != null)
+        {
+            node.Add(current.Value);
+            current = current.Previous;
+        }
+        return node.ToArray();
     }
 }

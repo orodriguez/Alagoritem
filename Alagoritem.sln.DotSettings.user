@@ -11,6 +11,11 @@
     &lt;TestId&gt;xUnit::B5D35C21-386B-4199-A111-C4FB16EE062D::net8.0::Tests.LnkListTests.Insert_Empty&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=45498e2f_002D8461_002D4c37_002Db762_002D08f5e60ee54e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ToReversedArray_Many" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::B5D35C21-386B-4199-A111-C4FB16EE062D::net8.0::Tests.LnkListTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6ddb7013_002D2ef7_002D474c_002Daca6_002D49eaede274eb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Solution /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
