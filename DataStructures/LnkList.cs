@@ -46,7 +46,40 @@ public class LnkList
 
     public void Insert(int index, int value)
     {
-        throw new NotImplementedException();
+        var node = new LnkListNode(value);
+        
+        if (_head == null && index == 0)
+        {
+            _head = _last = node;
+            return;
+        }
+
+        if (index == 0)
+        {
+            Prepend(value);
+            return;
+        }
+
+        var current = _head;
+        var i = 0;
+
+        while (current != null)
+        {
+            if (index == i)
+            {
+                current.Previous!.Link(node);
+                node.Link(current);
+                return;
+            }
+
+            i++;
+            current = current.Next;
+        }
+
+        if (index != i) throw new ArgumentOutOfRangeException(nameof(index));
+        
+        _last!.Link(node);
+        _last = node;
     }
 
     public IEnumerable<int> ToArray() => 

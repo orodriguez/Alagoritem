@@ -25,4 +25,9 @@ internal class LnkListNode
         return result.ToArray();
     }
 
+    public void Link(LnkListNode node)
+    {
+        Next = node;
+        node.Previous = this;
+    }
 }
