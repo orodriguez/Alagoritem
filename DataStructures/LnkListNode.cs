@@ -43,4 +43,18 @@ internal class LnkListNode
         
         return result.ToArray();
     }
+
+    public int Count()
+    {
+        var current = this;
+        var count = 0;
+        // O(n)
+        while (current != null)
+        {
+            count++;
+            current = current.Next;
+        }
+
+        return count;
+    }
 }

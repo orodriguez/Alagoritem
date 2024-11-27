@@ -87,4 +87,13 @@ public class LnkList
 
     public int[] ToReversedArray() => 
         _last == null ? Array.Empty<int>() : _last.ToReversedArray();
+    
+    public int Count()
+    {
+        // O(1)
+        if (_head == null)
+            return 0;
+
+        return _head.Count();
+    }
 }

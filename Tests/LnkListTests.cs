@@ -106,7 +106,21 @@ public class LnkListTests
         
         Assert.Equal(new[] { 10, 20, 30, 40 }, l.ToArray());
     }
+
+    [Fact]
+    public void Count_Empty()
+    {
+        var l = new LnkList();
+        Assert.Equal(0, l.Count());
+    }
     
+    [Fact]
+    public void Count_Many()
+    {
+        var l = new LnkList(1, 2, 3);
+        Assert.Equal(3, l.Count());
+    }
+
     [Fact]
     public void Insert_NotFound()
     {
