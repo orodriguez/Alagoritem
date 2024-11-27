@@ -13,13 +13,15 @@ internal class LnkListNode
         Previous = previous;
     }
     
+    public int GetValue() => Value;
+    
     public int[] ToArray()
     {
         var result = new List<int>();
         var current = this;
         while (current != null)
         {
-            result.Add(current.Value);
+            result.Add(current.GetValue());
             current = current.Next;
         }
         return result.ToArray();
