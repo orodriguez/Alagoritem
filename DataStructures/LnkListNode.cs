@@ -13,7 +13,7 @@ internal class LnkListNode
         Previous = previous;
     }
     
-    public int GetValue() => Value;
+    public int GetValues() => Value;
     
     public int[] ToArray()
     {
@@ -21,7 +21,7 @@ internal class LnkListNode
         var current = this;
         while (current != null)
         {
-            result.Add(current.GetValue());
+            result.Add(current.GetValues());
             current = current.Next;
         }
         return result.ToArray();
