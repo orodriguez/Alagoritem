@@ -46,14 +46,46 @@ public class LnkList
 
     public void Insert(int index, int value)
     {
-        throw new NotImplementedException();
+        //Insert Empty
+        if (_head == null)
+        {
+            _head = new LnkListNode(value);
+            _last = _head;
+        }
+        else if (index == 0)
+        {
+            //Insert One
+            var node = new LnkListNode(value);
+            node.Next = _head;
+            _head = node;
+        }
+        else
+        {
+            var node = new LnkListNode(value);
+            LnkListNode c = _head;
+            int i = 0;
+            
+            while (i < index - 1)
+            {
+                c = c.Next;
+                i += 1;
+                
+            }
+
+            node.Next = c.Next;
+            c.Next = node;
+            
+        }
+        
     }
+    
+    
 
     public IEnumerable<int> ToArray() => 
         _head == null ? Array.Empty<int>() : _head.ToArray();
 
     public int[] ToReversedArray()
     {
-        throw new NotImplementedException();
+        return [];
     }
 }
