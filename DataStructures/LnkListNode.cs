@@ -8,8 +8,8 @@ public class LnkListNode
     public LnkListNode(int value, LnkListNode? next = null, LnkListNode? previous = null)
     {
         Value = value;
-        Next = next;
-        Previous = previous;
+        Next = null;
+        Previous = null;
     }
     
     public int GetValue() => Value;
@@ -31,4 +31,23 @@ public class LnkListNode
         return result.ToArray();
     }
 
+    public void Link(LnkListNode? node)
+    {
+        Next = node;
+        if (node != null)
+            node.Previous = this;
+    }
+
+    public int[] ToReversedArray()
+    {
+        var result = new List<int>();
+        var current = this;
+        while (current != null)
+        {
+            result.Add(current.Value);
+            current = current.Previous;
+        }
+        
+        return result.ToArray();
+    }
 }

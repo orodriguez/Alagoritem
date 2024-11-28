@@ -44,6 +44,8 @@ public class LnkListTests
         l.Add(40);
         
         Assert.Equal(new[] { 10, 30, 40 }, l.ToArray());
+        Assert.Equal(new[] { 40, 30, 10 }, l.ToReversedArray());
+        Assert.Equal(3, l.Count());
     }
 
     [Fact]
@@ -54,6 +56,8 @@ public class LnkListTests
         l.Prepend(55);
         
         Assert.Equal(new[] { 55 }, l.ToArray());
+        Assert.Equal(new[] { 55 }, l.ToReversedArray());
+        Assert.Equal(1, l.Count());
     }
     
     [Fact]
@@ -65,6 +69,8 @@ public class LnkListTests
         l.Prepend(77);
         
         Assert.Equal(new[] { 77, 55 }, l.ToArray());
+        Assert.Equal(new[] { 55, 77 }, l.ToReversedArray());
+        Assert.Equal(2, l.Count());
     }
 
     [Fact]
@@ -75,6 +81,8 @@ public class LnkListTests
         l.Insert(0, 10);
         
         Assert.Equal(new[] { 10 }, l.ToArray());
+        Assert.Equal(new[] { 10 }, l.ToReversedArray());
+        Assert.Equal(1, l.Count());
     }
     
     [Fact]
@@ -85,6 +93,8 @@ public class LnkListTests
         l.Insert(0, 20);
         
         Assert.Equal(new[] { 20, 10 }, l.ToArray());
+        Assert.Equal(new[] { 10, 20 }, l.ToReversedArray());
+        Assert.Equal(2, l.Count());
     }
     
     [Fact]
@@ -95,6 +105,8 @@ public class LnkListTests
         l.Insert(1, 20);
         
         Assert.Equal(new[] { 10, 20, 30, 40 }, l.ToArray());
+        Assert.Equal(new[] { 40, 30, 20, 10 }, l.ToReversedArray());
+        Assert.Equal(4, l.Count());
     }
     
     [Fact]
@@ -105,8 +117,77 @@ public class LnkListTests
         l.Insert(3, 40);
         
         Assert.Equal(new[] { 10, 20, 30, 40 }, l.ToArray());
+        Assert.Equal(new[] { 40, 30, 20, 10 }, l.ToReversedArray());
+        Assert.Equal(4, l.Count());
+    }
+
+    [Fact]
+    public void Delete_Empty()
+    {
+        var l = new LnkList();
+        l.Remove(10);
+        
+        Assert.Empty(l.ToArray());
+        Assert.Empty(l.ToReversedArray());
     }
     
+    [Fact]
+    public void Delete_OneElement()
+    {
+        var l = new LnkList(10);
+        l.Remove(10);
+        
+        Assert.Empty(l.ToArray());
+        Assert.Empty(l.ToReversedArray());
+        Assert.Equal(0, l.Count());
+    }
+    
+    [Fact]
+    public void Delete_Many_First()
+    {
+        var l = new LnkList(10, 20, 30);
+        l.Remove(10);
+        
+        Assert.Equal(new[] { 20, 30 }, l.ToArray());
+        Assert.Equal(2, l.Count());
+    }
+    
+    [Fact]
+    public void Delete_Many_Middle()
+    {
+        var l = new LnkList(10, 20, 30);
+        l.Remove(20);
+        
+        Assert.Equal(new[] { 10, 30 }, l.ToArray());
+        Assert.Equal(2, l.Count());
+    }
+    
+    [Fact]
+    public void Delete_Many_Last()
+    {
+        var l = new LnkList(10, 20, 30);
+        l.Remove(30);
+        
+        Assert.Equal(new[] { 10, 20 }, l.ToArray());
+        Assert.Equal(new[] { 20, 10 }, l.ToReversedArray());
+        Assert.Equal(2, l.Count());
+    }
+
+    [Fact]
+    public void Count_Empty()
+    {
+        var l = new LnkList();
+        Assert.Equal(0, l.Count());
+    }
+    
+    [Fact]
+    public void Count_Many()
+    {
+        var l = new LnkList(1, 2, 3);
+        Assert.Equal(3, l.Count());
+        Assert.Equal(3, l.Count());
+    }
+
     [Fact]
     public void Insert_NotFound()
     {

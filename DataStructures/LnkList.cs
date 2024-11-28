@@ -4,11 +4,13 @@ public class LnkList
 {
     private LnkListNode? _head;
     private LnkListNode? _last;
+    private int _count;
 
     public LnkList()
     {
         _head = null;
         _last = null;
+        _count = 0;
     }
 
     public LnkList(params int[] values)
@@ -20,18 +22,23 @@ public class LnkList
     // O(1)
     public void Prepend(int value)
     {
+        _count++;
+        
         if (_head == null)
         {
             _head = _last = new LnkListNode(value);
             return;
         }
 
-        _head = new LnkListNode(value, _head);
+        var node = new LnkListNode(value);
+        node.Link(_head);
+        _head = node;
     }
 
     // O(1)
     public void Add(int value)
     {
+        _count++;
         if (_head == null)
         {
             _head = _last = new LnkListNode(value);
@@ -79,7 +86,44 @@ public class LnkList
     public IEnumerable<int> ToArray() =>
         _head == null ? Array.Empty<int>() : _head.ToArray();
 
-    public int[] ToReversedArray()
+    public int[] ToReversedArray() => 
+        _last == null ? Array.Empty<int>() : _last.ToReversedArray();
+    
+    public int Count() => _count;
+
+    public void Remove(int value)
+    {
+        if (_head == null)
+            return;
+
+        if (_head.Value == value)
+        {
+            RemoveFirst();
+            return;
+        }
+
+        if (_last!.Value == value)
+        {
+            RemoveLast();
+            return;
+        }
+
+        var current = _head;
+        while (current != null)
+        {
+            if (current.Value == value)
+            {
+                var previous = current.Previous!;
+                previous.Link(current.Next);
+                _count--;
+                return;
+            }
+
+            current = current.Next;
+        }
+    }
+
+    public void RemoveFirst()
     {
         if (_head == null) return Array.Empty<int>();
 
