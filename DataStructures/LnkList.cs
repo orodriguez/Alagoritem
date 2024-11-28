@@ -94,11 +94,12 @@ public class LnkList
 
         while (current != null)
         {
-            result.Add(current.GetValue());
+            result.Add(current.Value);
             current = current.Previous;
         }
 
         return result.ToArray();
     }
+    
 
 }
