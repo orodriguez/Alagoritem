@@ -30,7 +30,9 @@ public class LnkList
             return;
         }
 
-        _head = new LnkListNode(value, _head);
+        var node = new LnkListNode(value);
+        node.Link(_head);
+        _head = node;
     }
 
     // O(1)
@@ -99,8 +101,13 @@ public class LnkList
 
         if (_head.Value == value)
         {
-            _head = _head.Next;
-            _count--;
+            RemoveFirst();
+            return;
+        }
+
+        if (_last!.Value == value)
+        {
+            RemoveLast();
             return;
         }
 
@@ -110,17 +117,48 @@ public class LnkList
             if (current.Value == value)
             {
                 var previous = current.Previous!;
-                
                 previous.Link(current.Next);
-                
-                if (current.Next == null)
-                    _last = previous;
-                
                 _count--;
                 return;
             }
 
             current = current.Next;
         }
+    }
+
+    public void RemoveFirst()
+    {
+        if (_head == null)
+            return;
+        
+        if (_head == _last)
+        {
+            _head = _last = null;
+            _count = 0;
+            return;
+        }
+        
+        var next = _head.Next;
+        next!.Previous = null;
+        _head = next;
+        _count--;
+    }
+
+    public void RemoveLast()
+    {
+        if (_last == null)
+            return;
+
+        if (_head == _last)
+        {
+            _head = _last = null;
+            _count = 0;
+            return;
+        }
+
+        var previous = _last.Previous;
+        previous!.Link(null);
+        _last = previous;
+        _count--;
     }
 }

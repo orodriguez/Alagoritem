@@ -6,11 +6,11 @@ internal class LnkListNode
     public LnkListNode? Next { get; set; }
     public LnkListNode? Previous { get; set; }
     
-    public LnkListNode(int value, LnkListNode? next = null, LnkListNode? previous = null)
+    public LnkListNode(int value)
     {
         Value = value;
-        Next = next;
-        Previous = previous;
+        Next = null;
+        Previous = null;
     }
     
     public int[] ToArray()
