@@ -55,13 +55,6 @@ public class LnkList
             throw new ArgumentOutOfRangeException(nameof(index));
 
         var node = new LnkListNode(value);
-        
-        if (_head == null && index == 0)
-        {
-            _head = _last = node;
-            _count++;
-            return;
-        }
 
         if (index == 0)
         {
