@@ -115,6 +115,46 @@ public class LnkListTests
     }
 
     [Fact]
+    public void Delete_Empty()
+    {
+        var l = new LnkList();
+        l.Remove(10);
+        
+        Assert.Empty(l.ToArray());
+    }
+    
+    [Fact]
+    public void Delete_OneElement()
+    {
+        var l = new LnkList(10);
+        l.Remove(10);
+        
+        Assert.Empty(l.ToArray());
+        Assert.Equal(0, l.Count());
+    }
+    
+    [Fact]
+    public void Delete_Many_Middle()
+    {
+        var l = new LnkList(10, 20, 30);
+        l.Remove(20);
+        
+        Assert.Equal(new[] { 10, 30 }, l.ToArray());
+        Assert.Equal(2, l.Count());
+    }
+    
+    [Fact]
+    public void Delete_Many_Last()
+    {
+        var l = new LnkList(10, 20, 30);
+        l.Remove(30);
+        
+        Assert.Equal(new[] { 10, 20 }, l.ToArray());
+        Assert.Equal(new[] { 20, 10 }, l.ToReversedArray());
+        Assert.Equal(2, l.Count());
+    }
+
+    [Fact]
     public void Count_Empty()
     {
         var l = new LnkList();

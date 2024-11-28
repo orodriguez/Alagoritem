@@ -2,7 +2,7 @@ namespace DataStructures;
 
 internal class LnkListNode
 {
-    private int Value { get; }
+    public int Value { get; }
     public LnkListNode? Next { get; set; }
     public LnkListNode? Previous { get; set; }
     
@@ -25,10 +25,11 @@ internal class LnkListNode
         return result.ToArray();
     }
 
-    public void Link(LnkListNode node)
+    public void Link(LnkListNode? node)
     {
         Next = node;
-        node.Previous = this;
+        if (node != null)
+            node.Previous = this;
     }
 
     public int[] ToReversedArray()

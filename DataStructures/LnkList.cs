@@ -91,4 +91,36 @@ public class LnkList
         _last == null ? Array.Empty<int>() : _last.ToReversedArray();
     
     public int Count() => _count;
+
+    public void Remove(int value)
+    {
+        if (_head == null)
+            return;
+
+        if (_head.Value == value)
+        {
+            _head = _head.Next;
+            _count--;
+            return;
+        }
+
+        var current = _head;
+        while (current != null)
+        {
+            if (current.Value == value)
+            {
+                var previous = current.Previous!;
+                
+                previous.Link(current.Next);
+                
+                if (current.Next == null)
+                    _last = previous;
+                
+                _count--;
+                return;
+            }
+
+            current = current.Next;
+        }
+    }
 }
