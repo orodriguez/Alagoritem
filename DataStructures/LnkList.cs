@@ -4,11 +4,13 @@ public class LnkList
 {
     private LnkListNode? _head;
     private LnkListNode? _last;
+    private int _count;
 
     public LnkList()
     {
         _head = null;
         _last = null;
+        _count = 0;
     }
 
     public LnkList(params int[] values)
@@ -20,6 +22,8 @@ public class LnkList
     // O(1)
     public void Prepend(int value)
     {
+        _count++;
+        
         if (_head == null)
         {
             _head = _last =  new LnkListNode(value);
@@ -32,6 +36,7 @@ public class LnkList
     // O(1)
     public void Add(int value)
     {
+        _count++;
         if (_head == null)
         {
             _head = _last =  new LnkListNode(value);
@@ -46,11 +51,15 @@ public class LnkList
 
     public void Insert(int index, int value)
     {
+        if (index < 0 || index > _count)
+            throw new ArgumentOutOfRangeException(nameof(index));
+
         var node = new LnkListNode(value);
         
         if (_head == null && index == 0)
         {
             _head = _last = node;
+            _count++;
             return;
         }
 
@@ -69,6 +78,7 @@ public class LnkList
             {
                 current.Previous!.Link(node);
                 node.Link(current);
+                _count++;
                 return;
             }
 
@@ -76,10 +86,9 @@ public class LnkList
             current = current.Next;
         }
 
-        if (index != i) throw new ArgumentOutOfRangeException(nameof(index));
-        
         _last!.Link(node);
         _last = node;
+        _count++;
     }
 
     public IEnumerable<int> ToArray() => 
@@ -88,12 +97,5 @@ public class LnkList
     public int[] ToReversedArray() => 
         _last == null ? Array.Empty<int>() : _last.ToReversedArray();
     
-    public int Count()
-    {
-        // O(1)
-        if (_head == null)
-            return 0;
-
-        return _head.Count();
-    }
+    public int Count() => _count;
 }

@@ -44,6 +44,7 @@ public class LnkListTests
         l.Add(40);
         
         Assert.Equal(new[] { 10, 30, 40 }, l.ToArray());
+        Assert.Equal(3, l.Count());
     }
 
     [Fact]
@@ -54,6 +55,7 @@ public class LnkListTests
         l.Prepend(55);
         
         Assert.Equal(new[] { 55 }, l.ToArray());
+        Assert.Equal(1, l.Count());
     }
     
     [Fact]
@@ -65,6 +67,7 @@ public class LnkListTests
         l.Prepend(77);
         
         Assert.Equal(new[] { 77, 55 }, l.ToArray());
+        Assert.Equal(2, l.Count());
     }
 
     [Fact]
@@ -75,6 +78,7 @@ public class LnkListTests
         l.Insert(0, 10);
         
         Assert.Equal(new[] { 10 }, l.ToArray());
+        Assert.Equal(1, l.Count());
     }
     
     [Fact]
@@ -85,6 +89,7 @@ public class LnkListTests
         l.Insert(0, 20);
         
         Assert.Equal(new[] { 20, 10 }, l.ToArray());
+        Assert.Equal(2, l.Count());
     }
     
     [Fact]
@@ -95,6 +100,7 @@ public class LnkListTests
         l.Insert(1, 20);
         
         Assert.Equal(new[] { 10, 20, 30, 40 }, l.ToArray());
+        Assert.Equal(4, l.Count());
     }
     
     [Fact]
@@ -105,6 +111,7 @@ public class LnkListTests
         l.Insert(3, 40);
         
         Assert.Equal(new[] { 10, 20, 30, 40 }, l.ToArray());
+        Assert.Equal(4, l.Count());
     }
 
     [Fact]
@@ -118,6 +125,7 @@ public class LnkListTests
     public void Count_Many()
     {
         var l = new LnkList(1, 2, 3);
+        Assert.Equal(3, l.Count());
         Assert.Equal(3, l.Count());
     }
 
