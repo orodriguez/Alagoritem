@@ -15,7 +15,7 @@ public class LnkList
 
     public LnkList(params int[] values)
     {
-        foreach (var value in values) 
+        foreach (var value in values)
             Add(value);
     }
 
@@ -26,7 +26,7 @@ public class LnkList
         
         if (_head == null)
         {
-            _head = _last =  new LnkListNode(value);
+            _head = _last = new LnkListNode(value);
             return;
         }
 
@@ -41,7 +41,7 @@ public class LnkList
         _count++;
         if (_head == null)
         {
-            _head = _last =  new LnkListNode(value);
+            _head = _last = new LnkListNode(value);
             return;
         }
 
@@ -53,40 +53,37 @@ public class LnkList
 
     public void Insert(int index, int value)
     {
-        if (index < 0 || index > _count)
-            throw new ArgumentOutOfRangeException(nameof(index));
-
-        var node = new LnkListNode(value);
-
         if (index == 0)
         {
-            Prepend(value);
+            _head = new LnkListNode(value, _head);
+            if (_last == null) _last = _head;
             return;
         }
 
         var current = _head;
-        var i = 0;
+        int currentIndex = 0;
 
-        while (current != null)
+        while (currentIndex < index - 1 && current != null)
         {
-            if (index == i)
-            {
-                current.Previous!.Link(node);
-                node.Link(current);
-                _count++;
-                return;
-            }
-
-            i++;
             current = current.Next;
+            currentIndex++;
         }
 
-        _last!.Link(node);
-        _last = node;
-        _count++;
+        if (current == null)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index));
+        }
+
+        var newNode = new LnkListNode(value, current.Next);
+        current.Next = newNode;
+
+        if (newNode.Next == null)
+        {
+            _last = newNode;
+        }
     }
 
-    public IEnumerable<int> ToArray() => 
+    public IEnumerable<int> ToArray() =>
         _head == null ? Array.Empty<int>() : _head.ToArray();
 
     public int[] ToReversedArray() => 
@@ -128,37 +125,19 @@ public class LnkList
 
     public void RemoveFirst()
     {
-        if (_head == null)
-            return;
-        
-        if (_head == _last)
-        {
-            _head = _last = null;
-            _count = 0;
-            return;
-        }
-        
-        var next = _head.Next;
-        next!.Previous = null;
-        _head = next;
-        _count--;
-    }
+        if (_head == null) return Array.Empty<int>();
 
-    public void RemoveLast()
-    {
-        if (_last == null)
-            return;
+        var result = new List<int>();
+        var current = _head;
 
-        if (_head == _last)
+        while (current != null)
         {
-            _head = _last = null;
-            _count = 0;
-            return;
+            result.Insert(0, current.GetValue());  
+            current = current.GetNext();         
         }
 
-        var previous = _last.Previous;
-        previous!.Link(null);
-        _last = previous;
-        _count--;
+        return result.ToArray();
     }
 }
+
+
