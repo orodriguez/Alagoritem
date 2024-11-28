@@ -26,5 +26,7 @@ internal class LnkListNode
         }
         return result.ToArray();
     }
+    
+    
 
 }
