@@ -164,6 +164,18 @@ public class LnkList
 
     public bool Contains(int value)
     {
-        throw new NotImplementedException();
+        if (_head == null)
+        {
+            return false;
+        }
+        var current = _head;
+        while (current.Next != null)
+        {
+            if (current.Value == value)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
