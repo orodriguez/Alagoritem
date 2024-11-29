@@ -164,6 +164,17 @@ public class LnkList
 
     public bool Contains(int value)
     {
-        throw new NotImplementedException();
+        LnkListNode current = _head;
+
+        while (current != null)
+        {
+            if (current.Value == value)
+            {
+                return true;
+            }
+            current = current.Next;
+        }
+        
+        return false;
     }
 }
