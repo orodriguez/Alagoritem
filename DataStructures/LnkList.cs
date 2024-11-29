@@ -1,9 +1,9 @@
 namespace DataStructures;
 
-public class LnkList
+public class LnkList<TValue>
 {
-    private LnkListNode? _head;
-    private LnkListNode? _last;
+    private LnkListNode<TValue>? _head;
+    private LnkListNode<TValue>? _last;
     private int _count;
 
     public LnkList()
@@ -13,50 +13,50 @@ public class LnkList
         _count = 0;
     }
 
-    public LnkList(params int[] values)
+    public LnkList(params TValue[] values)
     {
         foreach (var value in values) 
             Add(value);
     }
 
     // O(1)
-    public void Prepend(int value)
+    public void Prepend(TValue value)
     {
         _count++;
         
         if (_head == null)
         {
-            _head = _last =  new LnkListNode(value);
+            _head = _last =  new LnkListNode<TValue>(value);
             return;
         }
 
-        var node = new LnkListNode(value);
+        var node = new LnkListNode<TValue>(value);
         node.Link(_head);
         _head = node;
     }
 
     // O(1)
-    public void Add(int value)
+    public void Add(TValue value)
     {
         _count++;
         if (_head == null)
         {
-            _head = _last =  new LnkListNode(value);
+            _head = _last =  new LnkListNode<TValue>(value);
             return;
         }
 
-        var node = new LnkListNode(value);
+        var node = new LnkListNode<TValue>(value);
         node.Previous = _last;
         _last!.Next = node;
         _last = node;
     }
 
-    public void Insert(int index, int value)
+    public void Insert(int index, TValue value)
     {
         if (index < 0 || index > _count)
             throw new ArgumentOutOfRangeException(nameof(index));
 
-        var node = new LnkListNode(value);
+        var node = new LnkListNode<TValue>(value);
 
         if (index == 0)
         {
@@ -86,26 +86,26 @@ public class LnkList
         _count++;
     }
 
-    public IEnumerable<int> ToArray() => 
-        _head == null ? Array.Empty<int>() : _head.ToArray();
+    public IEnumerable<TValue> ToArray() => 
+        _head == null ? Array.Empty<TValue>() : _head.ToArray();
 
-    public int[] ToReversedArray() => 
-        _last == null ? Array.Empty<int>() : _last.ToReversedArray();
+    public TValue[] ToReversedArray() => 
+        _last == null ? Array.Empty<TValue>() : _last.ToReversedArray();
     
     public int Count() => _count;
 
-    public void Remove(int value)
+    public void Remove(TValue value)
     {
         if (_head == null)
             return;
 
-        if (_head.Value == value)
+        if (_head.Value!.Equals(value))
         {
             RemoveFirst();
             return;
         }
 
-        if (_last!.Value == value)
+        if (_last!.Value!.Equals(value))
         {
             RemoveLast();
             return;
@@ -114,7 +114,7 @@ public class LnkList
         var current = _head;
         while (current != null)
         {
-            if (current.Value == value)
+            if (current.Value!.Equals(value))
             {
                 var previous = current.Previous!;
                 previous.Link(current.Next);
@@ -167,7 +167,7 @@ public class LnkList
         var current = _head;
         while (current != null)
         {
-            if (current.Value == value)
+            if (current.Value!.Equals(value))
             {
                 return true;
             }

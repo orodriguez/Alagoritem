@@ -7,7 +7,7 @@ public class LnkListTests
     [Fact]
     public void ToArray_Empty()
     {
-        var l = new LnkList();
+        var l = new LnkList<int>();
         
         Assert.Equal(Array.Empty<int>(), l.ToArray());
     }
@@ -15,15 +15,15 @@ public class LnkListTests
     [Fact]
     public void ToArray_HasOneElement()
     {
-        var l = new LnkList(10, 30); 
+        var l = new LnkList<string>("a", "b"); 
 
-        Assert.Equal(new[] { 10, 30 }, l.ToArray());
+        Assert.Equal(new[] { "a", "b" }, l.ToArray());
     }
     
     [Fact]
     public void ToArray_HasTwoElements()
     {
-        var l = new LnkList(10, 30, 40);
+        var l = new LnkList<int>(10, 30, 40);
         
         Assert.Equal(new[] { 10, 30, 40 }, l.ToArray());
     }
@@ -31,7 +31,7 @@ public class LnkListTests
     [Fact]
     public void ToArray_HasMany()
     {
-        var l = new LnkList(10, 30, 40, 50, 60);
+        var l = new LnkList<int>(10, 30, 40, 50, 60);
         
         Assert.Equal(new[] { 10, 30, 40, 50, 60 }, l.ToArray());
     }
@@ -39,28 +39,28 @@ public class LnkListTests
     [Fact]
     public void Contains_Empty()
     {
-        var l = new LnkList();
+        var l = new LnkList<int>();
         Assert.False(l.Contains(10));
     }
     
     [Fact]
     public void Contains_One()
     {
-        var l = new LnkList(10);
+        var l = new LnkList<int>(10);
         Assert.True(l.Contains(10));
     }
     
     [Fact]
     public void Contains_OneNotFound()
     {
-        var l = new LnkList(11);
+        var l = new LnkList<int>(11);
         Assert.False(l.Contains(10));
     }
     
     [Fact]
     public void Contains_Many()
     {
-        var l = new LnkList(1, 2, 3);
+        var l = new LnkList<int>(1, 2, 3);
         Assert.True(l.Contains(1));
         Assert.True(l.Contains(2));
         Assert.True(l.Contains(3));
@@ -69,7 +69,7 @@ public class LnkListTests
     [Fact]
     public void Add()
     {
-        var l = new LnkList(10, 30);
+        var l = new LnkList<int>(10, 30);
         
         l.Add(40);
         
@@ -81,7 +81,7 @@ public class LnkListTests
     [Fact]
     public void Prepend()
     {
-        var l = new LnkList();
+        var l = new LnkList<int>();
         
         l.Prepend(55);
         
@@ -93,7 +93,7 @@ public class LnkListTests
     [Fact]
     public void Prepend_OneElement()
     {
-        var l = new LnkList();
+        var l = new LnkList<int>();
         
         l.Prepend(55);
         l.Prepend(77);
@@ -106,7 +106,7 @@ public class LnkListTests
     [Fact]
     public void Insert_Empty()
     {
-        var l = new LnkList();
+        var l = new LnkList<int>();
         
         l.Insert(0, 10);
         
@@ -118,7 +118,7 @@ public class LnkListTests
     [Fact]
     public void Insert_OneElement()
     {
-        var l = new LnkList(10);
+        var l = new LnkList<int>(10);
         
         l.Insert(0, 20);
         
@@ -130,7 +130,7 @@ public class LnkListTests
     [Fact]
     public void Insert_InMiddle()
     {
-        var l = new LnkList(10, 30, 40);
+        var l = new LnkList<int>(10, 30, 40);
         
         l.Insert(1, 20);
         
@@ -142,7 +142,7 @@ public class LnkListTests
     [Fact]
     public void Insert_AtEnd()
     {
-        var l = new LnkList(10, 20, 30);
+        var l = new LnkList<int>(10, 20, 30);
         
         l.Insert(3, 40);
         
@@ -154,7 +154,7 @@ public class LnkListTests
     [Fact]
     public void Delete_Empty()
     {
-        var l = new LnkList();
+        var l = new LnkList<int>();
         l.Remove(10);
         
         Assert.Empty(l.ToArray());
@@ -164,7 +164,7 @@ public class LnkListTests
     [Fact]
     public void Delete_OneElement()
     {
-        var l = new LnkList(10);
+        var l = new LnkList<int>(10);
         l.Remove(10);
         
         Assert.Empty(l.ToArray());
@@ -175,7 +175,7 @@ public class LnkListTests
     [Fact]
     public void Delete_Many_First()
     {
-        var l = new LnkList(10, 20, 30);
+        var l = new LnkList<int>(10, 20, 30);
         l.Remove(10);
         
         Assert.Equal(new[] { 20, 30 }, l.ToArray());
@@ -185,7 +185,7 @@ public class LnkListTests
     [Fact]
     public void Delete_Many_Middle()
     {
-        var l = new LnkList(10, 20, 30);
+        var l = new LnkList<int>(10, 20, 30);
         l.Remove(20);
         
         Assert.Equal(new[] { 10, 30 }, l.ToArray());
@@ -195,7 +195,7 @@ public class LnkListTests
     [Fact]
     public void Delete_Many_Last()
     {
-        var l = new LnkList(10, 20, 30);
+        var l = new LnkList<int>(10, 20, 30);
         l.Remove(30);
         
         Assert.Equal(new[] { 10, 20 }, l.ToArray());
@@ -206,14 +206,14 @@ public class LnkListTests
     [Fact]
     public void Count_Empty()
     {
-        var l = new LnkList();
+        var l = new LnkList<int>();
         Assert.Equal(0, l.Count());
     }
     
     [Fact]
     public void Count_Many()
     {
-        var l = new LnkList(1, 2, 3);
+        var l = new LnkList<int>(1, 2, 3);
         Assert.Equal(3, l.Count());
         Assert.Equal(3, l.Count());
     }
@@ -221,7 +221,7 @@ public class LnkListTests
     [Fact]
     public void Insert_NotFound()
     {
-        var l = new LnkList();
+        var l = new LnkList<int>();
 
         Assert.Throws<ArgumentOutOfRangeException>(() => l.Insert(3, 10));
     }
@@ -229,7 +229,7 @@ public class LnkListTests
     [Fact]
     public void ToReversedArray_Empty()
     {
-        var l = new LnkList();
+        var l = new LnkList<int>();
         
         Assert.Equal(Array.Empty<int>(), l.ToReversedArray());
     }
@@ -237,7 +237,7 @@ public class LnkListTests
     [Fact]
     public void ToReversedArray_One()
     {
-        var l = new LnkList(10);
+        var l = new LnkList<int>(10);
         
         Assert.Equal(new[] { 10 }, l.ToReversedArray());
     }
@@ -245,7 +245,7 @@ public class LnkListTests
     [Fact]
     public void ToReversedArray_Many()
     {
-        var l = new LnkList(10, 20, 30);
+        var l = new LnkList<int>(10, 20, 30);
         
         Assert.Equal(new[] { 30, 20, 10 }, l.ToReversedArray());
     }

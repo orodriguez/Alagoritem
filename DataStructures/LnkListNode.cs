@@ -1,21 +1,21 @@
 namespace DataStructures;
 
-internal class LnkListNode
+internal class LnkListNode<TValue>
 {
-    public int Value { get; }
-    public LnkListNode? Next { get; set; }
-    public LnkListNode? Previous { get; set; }
+    public TValue Value { get; }
+    public LnkListNode<TValue>? Next { get; set; }
+    public LnkListNode<TValue>? Previous { get; set; }
     
-    public LnkListNode(int value)
+    public LnkListNode(TValue value)
     {
         Value = value;
         Next = null;
         Previous = null;
     }
     
-    public int[] ToArray()
+    public TValue[] ToArray()
     {
-        var result = new List<int>();
+        var result = new List<TValue>();
         var current = this;
         while (current != null)
         {
@@ -25,16 +25,16 @@ internal class LnkListNode
         return result.ToArray();
     }
 
-    public void Link(LnkListNode? node)
+    public void Link(LnkListNode<TValue>? node)
     {
         Next = node;
         if (node != null)
             node.Previous = this;
     }
 
-    public int[] ToReversedArray()
+    public TValue[] ToReversedArray()
     {
-        var result = new List<int>();
+        var result = new List<TValue>();
         var current = this;
         while (current != null)
         {
