@@ -19,6 +19,17 @@ public class LnkList<TValue>
             Add(value);
     }
 
+    public TValue LastValue
+    {
+        get
+        {
+            if (_last == null)
+                throw new InvalidOperationException(
+                    "Can not read last value from empty list");
+            return _last.Value;
+        }
+    }
+
     // O(1)
     public void Prepend(TValue value)
     {
@@ -86,7 +97,7 @@ public class LnkList<TValue>
         _count++;
     }
 
-    public IEnumerable<TValue> ToArray() => 
+    public TValue[] ToArray() => 
         _head == null ? Array.Empty<TValue>() : _head.ToArray();
 
     public TValue[] ToReversedArray() => 
@@ -155,7 +166,7 @@ public class LnkList<TValue>
             _count = 0;
             return;
         }
-
+        
         var previous = _last.Previous;
         previous!.Link(null);
         _last = previous;
