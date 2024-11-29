@@ -161,4 +161,9 @@ public class LnkList
         _last = previous;
         _count--;
     }
+
+    public bool Contains(int value)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -35,7 +35,37 @@ public class LnkListTests
         
         Assert.Equal(new[] { 10, 30, 40, 50, 60 }, l.ToArray());
     }
+
+    [Fact]
+    public void Contains_Empty()
+    {
+        var l = new LnkList();
+        Assert.False(l.Contains(10));
+    }
     
+    [Fact]
+    public void Contains_One()
+    {
+        var l = new LnkList(10);
+        Assert.True(l.Contains(10));
+    }
+    
+    [Fact]
+    public void Contains_OneNotFound()
+    {
+        var l = new LnkList(11);
+        Assert.False(l.Contains(10));
+    }
+    
+    [Fact]
+    public void Contains_Many()
+    {
+        var l = new LnkList(1, 2, 3);
+        Assert.True(l.Contains(1));
+        Assert.True(l.Contains(2));
+        Assert.True(l.Contains(3));
+    }
+
     [Fact]
     public void Add()
     {
