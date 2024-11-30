@@ -5,7 +5,7 @@ namespace Tests;
 public class HashMapTests
 {
     [Fact]
-    public void Test()
+    public void Simple()
     {
         var a = new HashMap<int>();
         a.Set("a", 10);
