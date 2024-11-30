@@ -23,15 +23,7 @@ public class HashMap<TValue>
         return _values[index];
     }
 
-    private int Hash(string key)
-    {
-        var sum = 0;
-
-        foreach (var chr in key)
-        {
-            sum += chr;
-        }
-
-        return sum % _capacity;
-    }
+    // O(1)
+    private int Hash(string key) => 
+        Math.Abs(key.GetHashCode()) % _capacity;
 }
