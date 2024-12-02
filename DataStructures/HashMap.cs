@@ -11,6 +11,12 @@ public class HashMap<TValue>
         _buckets = new Bucket[capacity];
     }
 
+    public TValue this[string key]
+    {
+        get => Get(key);
+        set => Set(key, value);
+    }
+
     public void Set(string key, TValue value)
     {
         var index = Hash(key);
@@ -22,7 +28,7 @@ public class HashMap<TValue>
         var index = Hash(key);
         return GetOrCreateBucket(index).Get(key);
     }
-    
+
     private Bucket GetOrCreateBucket(int index) => _buckets[index] ??= new Bucket();
 
     private int Hash(string key) => 
