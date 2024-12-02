@@ -127,8 +127,6 @@ public class LnkList
 
         return stack.Count == 0;
     }
-
-    /// LasChange
     
 
 }

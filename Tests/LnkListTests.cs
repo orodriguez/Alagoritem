@@ -157,5 +157,4 @@ public class LnkListTests
         Assert.False(LnkList.ValidParenthesis("(]"));
     }
     
-    /// LasChange
 }
