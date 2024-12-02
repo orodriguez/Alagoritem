@@ -23,7 +23,6 @@ public class HashMap<TValue>
         return _values[index];
     }
 
-    // O(1)
     private int Hash(string key) => 
         Math.Abs(key.GetHashCode()) % _capacity;
 }

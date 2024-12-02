@@ -18,12 +18,13 @@ public class HashMapTests
     [Fact]
     public void Collision()
     {
-        var a = new HashMap<int>();
+        var a = new HashMap<int>(capacity: 2);
         a.Set("a", 10);
-        a.Set("k", 20);
+        a.Set("b", 20);
+        a.Set("c", 30);
 
-        var value = a.Get("a");
-        
-        Assert.Equal(10, value);
+        Assert.Equal(10, a.Get("a"));
+        Assert.Equal(20, a.Get("b"));
+        Assert.Equal(30, a.Get("c"));
     }
 }
