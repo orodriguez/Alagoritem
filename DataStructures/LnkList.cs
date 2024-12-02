@@ -94,7 +94,7 @@ public class LnkList
 
         while (current != null)
         {
-            result.Add(current.Value);
+            result.Add(current.GetValues());
             current = current.Previous;
         }
 
