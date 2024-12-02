@@ -42,7 +42,14 @@ public class HashMap<TValue>
             .Where(bucket => bucket != null)
             .SelectMany(bucket => bucket!.Keys());
 
-    private Bucket GetOrCreateBucket(int index) => _buckets[index] ??= new Bucket();
+    public bool ContainsKey(string key)
+    {
+        var index = Hash(key);
+        return GetOrCreateBucket(index).ContainsKey(key);
+    }
+
+    private Bucket GetOrCreateBucket(int index) => 
+        _buckets[index] ??= new Bucket();
 
     private int Hash(string key) => 
         Math.Abs(key.GetHashCode()) % _capacity;
@@ -82,5 +89,8 @@ public class HashMap<TValue>
 
         public IEnumerable<string> Keys() => 
             _list.Select(kv => kv.key);
+
+        public bool ContainsKey(string key) => 
+            _list.Any(kv => kv.key == key);
     }
 }

@@ -71,4 +71,23 @@ public class HashMapTests
         
         Assert.False(h.Remove("b"));
     }
+    
+    [Fact]
+    public void ContainsKey_Empty()
+    {
+        var h = new HashMap<int>();
+        
+        Assert.False(h.ContainsKey("a"));
+    }
+    
+    [Fact]
+    public void ContainsKey()
+    {
+        var h = new HashMap<int>
+        {
+            ["a"] = 1
+        };
+        
+        Assert.True(h.ContainsKey("a"));
+    }
 }
