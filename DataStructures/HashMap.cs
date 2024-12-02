@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace DataStructures;
 
 public class HashMap<TValue>
@@ -28,6 +30,17 @@ public class HashMap<TValue>
         var index = Hash(key);
         return GetOrCreateBucket(index).Get(key);
     }
+
+    public bool Remove(string key)
+    {
+        var index = Hash(key);
+        return GetOrCreateBucket(index).Remove(key);
+    }
+
+    public IEnumerable<string> Keys() => 
+        _buckets
+            .Where(bucket => bucket != null)
+            .SelectMany(bucket => bucket!.Keys());
 
     private Bucket GetOrCreateBucket(int index) => _buckets[index] ??= new Bucket();
 
@@ -60,5 +73,14 @@ public class HashMap<TValue>
             
             return keyValue.value;
         }
+
+        public bool Remove(string key)
+        {
+            var keyValue = _list.FirstOrDefault(kv => kv.key == key);
+            return _list.Remove(keyValue);
+        }
+
+        public IEnumerable<string> Keys() => 
+            _list.Select(kv => kv.key);
     }
 }

@@ -51,4 +51,24 @@ public class HashMapTests
         Assert.Equal(20, a["b"]);
         Assert.Equal(30, a["c"]);
     }
+    
+    [Fact]
+    public void Remove()
+    {
+        var h = new HashMap<int>
+        {
+            ["a"] = 1
+        };
+        
+        Assert.True(h.Remove("a"));
+        Assert.Empty(h.Keys());
+    }
+    
+    [Fact]
+    public void Remove_NotFound()
+    {
+        var h = new HashMap<int>();
+        
+        Assert.False(h.Remove("b"));
+    }
 }
