@@ -1,9 +1,18 @@
+using System.Collections;
 using DataStructures;
 
 namespace Tests;
 
 public class HashMapTests
 {
+    [Fact]
+    public void Empty_Get_KeyNotFound()
+    {
+        var h = new HashMap<string>();
+
+        Assert.Throws<KeyNotFoundException>(() => h.Get("a"));
+    }
+
     [Fact]
     public void Simple()
     {
@@ -27,4 +36,8 @@ public class HashMapTests
         Assert.Equal(20, a.Get("b"));
         Assert.Equal(30, a.Get("c"));
     }
+    
+    // TODO: Empty
+    // TODO: this[key]
+    // TODO: Test override value
 }
