@@ -2,7 +2,7 @@ namespace DataStructures;
 
 internal class LnkListNode
 {
-    public int Value { get; }
+    private int Value { get; }
     public LnkListNode? Next { get; set; }
     public LnkListNode? Previous { get; set; }
     
@@ -13,7 +13,7 @@ internal class LnkListNode
         Previous = previous;
     }
     
-   
+    public int GetValues() => Value;
     
     public int[] ToArray()
     {
@@ -21,7 +21,7 @@ internal class LnkListNode
         var current = this;
         while (current != null)
         {
-            result.Add(current.Value);
+            result.Add(current.GetValues());
             current = current.Next;
         }
         return result.ToArray();
