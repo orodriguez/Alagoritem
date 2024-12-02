@@ -94,11 +94,38 @@ public class LnkList
 
         while (current != null)
         {
-            result.Add(current.Value);
+            result.Add(current.GetValues());
             current = current.Previous;
         }
 
         return result.ToArray();
+    }
+    
+    public static bool ValidParenthesis(string s)
+    {
+        var stack = new Stack<char>();
+
+        foreach (var ch in s)
+        {
+            if (ch == '(' || ch == '[' || ch == '{')
+            {
+                stack.Push(ch);
+            }
+            else if (ch == ')' || ch == ']' || ch == '}')
+            {
+                if (stack.Count == 0) return false;
+
+                var top = stack.Pop();
+                if ((ch == ')' && top != '(') ||
+                    (ch == ']' && top != '[') ||
+                    (ch == '}' && top != '{'))
+                {
+                    return false;
+                }
+            }
+        }
+
+        return stack.Count == 0;
     }
     
 

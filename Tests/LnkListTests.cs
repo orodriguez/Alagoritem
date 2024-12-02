@@ -138,4 +138,23 @@ public class LnkListTests
         
         Assert.Equal(new[] { 30, 20, 10 }, l.ToReversedArray());
     }
+    
+    [Fact]
+    public void ValidParenthesis_EmptyString()
+    {
+        Assert.True(LnkList.ValidParenthesis(""));
+    }
+
+    [Fact]
+    public void ValidParenthesis_Valid()
+    {
+        Assert.True(LnkList.ValidParenthesis("()[]{}"));
+    }
+
+    [Fact]
+    public void ValidParenthesis_Invalid()
+    {
+        Assert.False(LnkList.ValidParenthesis("(]"));
+    }
+    
 }
