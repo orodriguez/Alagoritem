@@ -48,6 +48,11 @@ public class HashMap<TValue>
         return GetOrCreateBucket(index).ContainsKey(key);
     }
 
+    public IEnumerable<TValue> Values() =>
+        _buckets
+            .Where(bucket => bucket != null)
+            .SelectMany(bucket => bucket!.Values());
+
     private Bucket GetOrCreateBucket(int index) => 
         _buckets[index] ??= new Bucket();
 
@@ -89,6 +94,9 @@ public class HashMap<TValue>
 
         public IEnumerable<string> Keys() => 
             _list.Select(kv => kv.key);
+
+        public IEnumerable<TValue> Values() => 
+            _list.Select(kv => kv.value);
 
         public bool ContainsKey(string key) => 
             _list.Any(kv => kv.key == key);

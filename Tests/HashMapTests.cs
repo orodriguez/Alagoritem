@@ -90,4 +90,24 @@ public class HashMapTests
         
         Assert.True(h.ContainsKey("a"));
     }
+    
+    [Fact]
+    public void Values_Empty()
+    {
+        var h = new HashMap<int>();
+        
+        Assert.Empty(h.Values());
+    }
+
+    [Fact]
+    public void Values_TwoElements()
+    {
+        var h = new HashMap<int>
+        {
+            ["a"] = 1,
+            ["b"] = 2
+        };
+        
+        Assert.Equal(new[] { 1, 2 }, h.Values().Order());
+    }
 }
