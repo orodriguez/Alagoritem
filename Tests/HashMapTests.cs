@@ -14,20 +14,31 @@ public class HashMapTests
     }
 
     [Fact]
-    public void Simple()
+    public void Get_OneElementExists()
     {
         var a = new HashMap<int>
         {
             ["a"] = 10
         };
 
-        var value = a["a"];
-        
-        Assert.Equal(10, value);
+        Assert.Equal(10, a["a"]);
     }
     
     [Fact]
-    public void Collision()
+    public void Set_Override()
+    {
+        var h = new HashMap<int>(capacity: 2)
+        {
+            ["a"] = 10
+        };
+
+        h["a"] = 20;
+
+        Assert.Equal(20, h["a"]);
+    }
+    
+    [Fact]
+    public void Set_Collision()
     {
         var a = new HashMap<int>(capacity: 2)
         {
@@ -40,7 +51,4 @@ public class HashMapTests
         Assert.Equal(20, a["b"]);
         Assert.Equal(30, a["c"]);
     }
-    
-    // TODO: this[key]
-    // TODO: Test override value
 }

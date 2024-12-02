@@ -41,12 +41,19 @@ public class HashMap<TValue>
         public Bucket() =>
             _list = new LinkedList<(string key, TValue value)>();
 
-        public void Set(string key, TValue value) =>
+        public void Set(string key, TValue value)
+        {
+            var keyValue = _list.FirstOrDefault(kv => kv.key == key);
+
+            if (keyValue.key != null)
+                _list.Remove(keyValue);
+
             _list.AddLast((key, value));
+        }
 
         public TValue Get(string key)
         {
-            var keyValue = _list.FirstOrDefault(tuple => tuple.key == key);
+            var keyValue = _list.FirstOrDefault(kv => kv.key == key);
 
             if (keyValue.key == null)
                 throw new KeyNotFoundException(key);
