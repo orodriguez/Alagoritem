@@ -13,6 +13,13 @@ public class TreeNode<TValue>
         Children = new List<TreeNode<TValue>>();
     }
 
-    public void Add(TValue childValue) => 
-        Children.Add(new TreeNode<TValue>(childValue));
+    public TreeNode<TValue> Add(TValue childValue)
+    {
+        var node = new TreeNode<TValue>(childValue);
+        Children.Add(node);
+        return node;
+    }
+
+    public int Count() =>
+        Children.Sum(child => child.Count()) + 1;
 }
