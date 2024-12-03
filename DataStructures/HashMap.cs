@@ -58,8 +58,10 @@ public class HashMap<TKey, TValue>
 
     private int Hash(TKey key)
     {
-        // TODO: Test for key == null
-        return Math.Abs(key.GetHashCode()) % _capacity;
+        if (Equals(key, default(TKey)))
+            throw new ArgumentNullException(nameof(key));
+        
+        return Math.Abs(key!.GetHashCode()) % _capacity;
     }
 
     private sealed class Bucket

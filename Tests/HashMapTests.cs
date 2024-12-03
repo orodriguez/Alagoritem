@@ -52,6 +52,14 @@ public class HashMapTests
     }
     
     [Fact]
+    public void Set_NullKey()
+    {
+        var d = new HashMap<string, int>();
+
+        Assert.Throws<ArgumentNullException>(() => d[null] = 1);
+    }
+    
+    [Fact]
     public void Remove()
     {
         var h = new HashMap<string, int>
