@@ -50,4 +50,27 @@ public class TreeNodeTests
         t.Add("Goten");
         Assert.Equal(4, t.Count());
     }
+
+    [Fact]
+    public void Level()
+    {
+        var goku = new TreeNode<string>("Goku");
+        Assert.Equal(0, goku.Level);
+        
+        var gohan = goku.Add("Gohan");
+        Assert.Equal(1, gohan.Level);
+
+        var pan = gohan.Add("Pan");
+        Assert.Equal(2, pan.Level);
+    }
+    
+    [Fact]
+    public void Height()
+    {
+        var goku = new TreeNode<string>("Goku")
+            .Add("Gohan")
+            .Add("Pan");
+        
+        Assert.Equal(2, goku.Height());
+    }
 }

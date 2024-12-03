@@ -5,6 +5,7 @@ public class TreeNode<TValue>
     public TValue Value { get; set; }
     public TreeNode<TValue>? Parent { get; set; }
     public List<TreeNode<TValue>> Children { get; set; }
+    public int Level { get; set; }
 
     public TreeNode(TValue value)
     {
@@ -22,4 +23,9 @@ public class TreeNode<TValue>
 
     public int Count() =>
         Children.Sum(child => child.Count()) + 1;
+
+    public int Height()
+    {
+        throw new NotImplementedException();
+    }
 }
