@@ -1,4 +1,3 @@
-using System.Collections;
 using DataStructures;
 
 namespace Tests;
@@ -8,7 +7,7 @@ public class HashMapTests
     [Fact]
     public void Empty_Get_KeyNotFound()
     {
-        var h = new HashMap<string>();
+        var h = new HashMap<string, string>();
 
         Assert.Throws<KeyNotFoundException>(() => h.Get("a"));
     }
@@ -16,7 +15,7 @@ public class HashMapTests
     [Fact]
     public void Get_OneElementExists()
     {
-        var a = new HashMap<int>
+        var a = new HashMap<string, int>
         {
             ["a"] = 10
         };
@@ -27,7 +26,7 @@ public class HashMapTests
     [Fact]
     public void Set_Override()
     {
-        var h = new HashMap<int>(capacity: 2)
+        var h = new HashMap<string, int>(capacity: 2)
         {
             ["a"] = 10
         };
@@ -40,7 +39,7 @@ public class HashMapTests
     [Fact]
     public void Set_Collision()
     {
-        var a = new HashMap<int>(capacity: 2)
+        var a = new HashMap<string, int>(capacity: 2)
         {
             ["a"] = 10,
             ["b"] = 20,
@@ -55,7 +54,7 @@ public class HashMapTests
     [Fact]
     public void Remove()
     {
-        var h = new HashMap<int>
+        var h = new HashMap<string, int>
         {
             ["a"] = 1
         };
@@ -67,7 +66,7 @@ public class HashMapTests
     [Fact]
     public void Remove_NotFound()
     {
-        var h = new HashMap<int>();
+        var h = new HashMap<string, int>();
         
         Assert.False(h.Remove("b"));
     }
@@ -75,7 +74,7 @@ public class HashMapTests
     [Fact]
     public void ContainsKey_Empty()
     {
-        var h = new HashMap<int>();
+        var h = new HashMap<string, int>();
         
         Assert.False(h.ContainsKey("a"));
     }
@@ -83,7 +82,7 @@ public class HashMapTests
     [Fact]
     public void ContainsKey()
     {
-        var h = new HashMap<int>
+        var h = new HashMap<string, int>
         {
             ["a"] = 1
         };
@@ -94,7 +93,7 @@ public class HashMapTests
     [Fact]
     public void Values_Empty()
     {
-        var h = new HashMap<int>();
+        var h = new HashMap<string, int>();
         
         Assert.Empty(h.Values());
     }
@@ -102,7 +101,7 @@ public class HashMapTests
     [Fact]
     public void Values_TwoElements()
     {
-        var h = new HashMap<int>
+        var h = new HashMap<string, int>
         {
             ["a"] = 1,
             ["b"] = 2
