@@ -24,20 +24,7 @@ public class TreeNode<TValue>
     public int Count() =>
         Children.Sum(child => child.Count()) + 1;
 
-    public int Level
-    {
-        get
-        {
-            if (Parent == null)
-            {
-                return 0;
-            }
-            else
-            {
-                return Parent.Level + 1;
-            }
-        }
-    }
+    public int Level => Parent == null ? 0 : Parent.Level + 1;
 
     public int Height()
     {
