@@ -77,4 +77,46 @@ public class TreeNodeTests
         
         Assert.Equal(2, goku.Height());
     }
+    
+    [Fact]
+    public void Search_Root()
+    {
+        var root = new TreeNode<string>("Goku");
+        var node = root.Search("Goku");
+        
+        Assert.Equal("Goku", node.Value);
+    }
+    
+    [Fact]
+    public void Search_Child()
+    {
+        var root = new TreeNode<string>("Goku");
+        root.Add("Gohan");
+        var node = root.Search("Gohan");
+        
+        Assert.NotNull(node);
+        Assert.Equal("Gohan", node.Value);
+    }
+    
+    [Fact]
+    public void Search_GrandChild()
+    {
+        var root = new TreeNode<string>("Goku");
+        root.Add("Gohan").Add("Pan");
+        var node = root.Search("Pan");
+        
+        Assert.NotNull(node);
+        Assert.Equal("Pan", node.Value);
+    }
+    
+    [Fact]
+    public void Search_GrandChildNotFound()
+    {
+        var root = new TreeNode<string>("Goku");
+        root
+            .Add("Gohan")
+            .Add("Pan");
+
+        Assert.Null(root.Search("Unknown"));
+    }
 }

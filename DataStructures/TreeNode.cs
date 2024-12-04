@@ -29,4 +29,16 @@ public class TreeNode<TValue>
         Children.Count == 0 
             ? 0 
             : 1 + Children.Max(child => child.Height());
+
+    public TreeNode<TValue>? Search(TValue value)
+    {
+        // O(1)
+        if (Equals(Value, value))
+            return this;
+        
+        // O(n)
+        return Children
+            .Select(child => child.Search(value))
+            .FirstOrDefault(node => node != null);
+    }
 }
