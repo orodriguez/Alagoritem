@@ -71,6 +71,9 @@ public class TreeNodeTests
             .Add("Gohan")
             .Add("Pan");
         
+        var gohan = new TreeNode<string>("Goku");
+        goku.Add("Gohan").Add("Pan");
+        
         Assert.Equal(2, goku.Height());
     }
 }
