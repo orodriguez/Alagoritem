@@ -66,7 +66,7 @@ public class TreeNodeTests
         var goku = new TreeNode<string>("Goku");
         Assert.Equal(0, goku.Height());
     }
-    
+
     [Fact]
     public void Height()
     {
@@ -74,41 +74,41 @@ public class TreeNodeTests
         goku
             .Add("Gohan")
             .Add("Pan");
-        
+
         Assert.Equal(2, goku.Height());
     }
-    
+
     [Fact]
     public void Search_Root()
     {
         var root = new TreeNode<string>("Goku");
         var node = root.Search("Goku");
-        
+
         Assert.Equal("Goku", node.Value);
     }
-    
+
     [Fact]
     public void Search_Child()
     {
         var root = new TreeNode<string>("Goku");
         root.Add("Gohan");
         var node = root.Search("Gohan");
-        
+
         Assert.NotNull(node);
         Assert.Equal("Gohan", node.Value);
     }
-    
+
     [Fact]
     public void Search_GrandChild()
     {
         var root = new TreeNode<string>("Goku");
         root.Add("Gohan").Add("Pan");
         var node = root.Search("Pan");
-        
+
         Assert.NotNull(node);
         Assert.Equal("Pan", node.Value);
     }
-    
+
     [Fact]
     public void Search_GrandChildNotFound()
     {
@@ -118,5 +118,89 @@ public class TreeNodeTests
             .Add("Pan");
 
         Assert.Null(root.Search("Unknown"));
+    }
+
+    [Fact]
+    public void Search_PreOrderTraverse()
+    {
+        var bardock = new TreeNode<string>("Bardock");
+        var goku = bardock.Add("Goku");
+
+        goku.Add("Gohan")
+            .Add("Pan");
+        goku.Add("Goten");
+
+        bardock
+            .Add("Raditz");
+
+        var list = new List<TreeNode<string>>();
+        bardock.PreOrderTraverse(node => list.Add(node));
+
+        Assert.Equal(new[]
+            {
+                "Bardock",
+                "Goku",
+                "Gohan",
+                "Pan",
+                "Goten",
+                "Raditz"
+            },
+            list.Select(node => node.Value));
+    }
+    
+    [Fact]
+    public void Search_PostOrderTraverse()
+    {
+        var bardock = new TreeNode<string>("Bardock");
+        var goku = bardock.Add("Goku");
+
+        goku.Add("Gohan")
+            .Add("Pan");
+        goku.Add("Goten");
+
+        bardock
+            .Add("Raditz");
+
+        var list = new List<TreeNode<string>>();
+        bardock.PostOrderTraverse(node => list.Add(node));
+
+        Assert.Equal(new[]
+            {
+                "Pan",
+                "Gohan",
+                "Goten",
+                "Goku",
+                "Raditz",
+                "Bardock"
+            },
+            list.Select(node => node.Value));
+    }
+    
+    [Fact(Skip = "Homework")]
+    public void Search_LevelTraverse()
+    {
+        var bardock = new TreeNode<string>("Bardock");
+        var goku = bardock.Add("Goku");
+
+        goku.Add("Gohan")
+            .Add("Pan");
+        goku.Add("Goten");
+
+        bardock
+            .Add("Raditz");
+
+        var list = new List<TreeNode<string>>();
+        bardock.LevelTraverse(node => list.Add(node));
+
+        Assert.Equal(new[]
+            {
+                "Bardock",
+                "Goku",
+                "Raditz",
+                "Gohan",
+                "Goten",
+                "Pan"
+            },
+            list.Select(node => node.Value));
     }
 }

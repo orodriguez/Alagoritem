@@ -41,4 +41,25 @@ public class TreeNode<TValue>
             .Select(child => child.Search(value))
             .FirstOrDefault(node => node != null);
     }
+
+    public void PreOrderTraverse(Action<TreeNode<TValue>> action)
+    {
+        action(this);
+
+        foreach (var child in Children) 
+            child.PreOrderTraverse(action);
+    }
+
+    public void PostOrderTraverse(Action<TreeNode<TValue>> action)
+    {
+        foreach (var child in Children) 
+            child.PostOrderTraverse(action);
+        
+        action(this);
+    }
+
+    public void LevelTraverse(Action<TreeNode<TValue>> action)
+    {
+        throw new NotImplementedException();
+    }
 }
