@@ -7,16 +7,17 @@ public class TreeNode<TValue>
     public List<TreeNode<TValue>> Children { get; set; }
     public int Level { get; set; }
 
-    public TreeNode(TValue value)
+    public TreeNode(TValue value, int level = 0)
     {
         Value = value;
         Parent = null;
         Children = new List<TreeNode<TValue>>();
+        Level = level;
     }
 
     public TreeNode<TValue> Add(TValue childValue)
     {
-        var node = new TreeNode<TValue>(childValue);
+        var node = new TreeNode<TValue>(childValue, Level + 1);
         Children.Add(node);
         return node;
     }
@@ -24,8 +25,8 @@ public class TreeNode<TValue>
     public int Count() =>
         Children.Sum(child => child.Count()) + 1;
 
-    public int Height()
-    {
-        throw new NotImplementedException();
-    }
+    public int Height() => 
+        Children.Count == 0 
+            ? 0 
+            : 1 + Children.Max(child => child.Height());
 }
