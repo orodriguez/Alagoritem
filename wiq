@@ -1,0 +1,179 @@
+[33mcommit 591ad250ed90ac6521e6f6bbd709be20ed8c47cc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;32mtrees[m[33m)[m
+Author: Cleyrol Santana <cleyrolsc@gmail.com>
+Date:   Wed Dec 4 15:38:36 2024 -0400
+
+    .
+
+[33mcommit c06afbdbcd1642fabd58ef8ca9f6754ea39efa90[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Fri Nov 29 21:23:50 2024 -0400
+
+    Use GetHashCode for Hash function
+
+[33mcommit fe9cc8fa02e10be88440134d334e57b88b868b2c[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Fri Nov 29 21:17:30 2024 -0400
+
+    Introduction to collisions
+
+[33mcommit d38fc8642518ce33273b6bc171bb5fca19e9a68c[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Fri Nov 29 21:05:46 2024 -0400
+
+    Simple HashMap
+
+[33mcommit 5fcee33be6a976b61c213d8775529943842a02d8[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Fri Nov 29 19:58:25 2024 -0400
+
+    Test queue
+
+[33mcommit 14eb24b7e4eff37481e00ab52854b82b40908147[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Fri Nov 29 19:46:32 2024 -0400
+
+    Stack implementation
+
+[33mcommit eeb15e9b0cfcc24271a2640b6f3faa5e72e0095a[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Fri Nov 29 18:37:57 2024 -0400
+
+    Make generic
+
+[33mcommit 3818a60ac0fac7055f896433d4323e961e07b7a5[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Fri Nov 29 18:19:36 2024 -0400
+
+    Contains
+
+[33mcommit 74db01afc60ed4c4f4af1ca9ffd8a061e7766a2f[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Thu Nov 28 20:34:18 2024 -0400
+
+    Add Contains tests
+
+[33mcommit cea4e986f3be7a8478df3bbbd16e4e6d300fb299[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Wed Nov 27 21:41:38 2024 -0400
+
+    Fix bugs related to _last
+
+[33mcommit 65dd73da442f56db3d6851e744c55655f432a8fc[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Wed Nov 27 20:57:05 2024 -0400
+
+    Remove
+
+[33mcommit 133ca8cf581b75b044e139952d8bed34c3ff08cc[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Wed Nov 27 20:37:09 2024 -0400
+
+    Remove unnecessary if
+
+[33mcommit bb56787baaadd636ce7753486d506ac5d3b8fcdb[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Wed Nov 27 20:01:57 2024 -0400
+
+    Count optimization
+
+[33mcommit 98ea516b23ceb5b64c871f7bd9af26d192af80e9[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Wed Nov 27 19:49:03 2024 -0400
+
+    Count()
+
+[33mcommit b4b726fb740f1e8c6d7579c9f6923151d6f18306[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Wed Nov 27 19:43:20 2024 -0400
+
+    ToReversedArray
+
+[33mcommit 28294958f32f665d41602d1f7aff8f0d155f0c8b[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Wed Nov 27 19:13:30 2024 -0400
+
+    Insert
+
+[33mcommit 0b9e2aaffe39b54b9523976a542ab711434afe30[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Tue Nov 26 10:23:37 2024 -0400
+
+    Config
+
+[33mcommit 4ce732ea0b2f62c504cfe2565def6f5e14a41978[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Tue Nov 26 10:21:33 2024 -0400
+
+    Add test cases for Insert and ToReversedArray
+
+[33mcommit cc7ac35730f630d72dbb5ef7d4519e1f30af17b2[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 22:02:58 2024 -0400
+
+    Doubly Linked List
+
+[33mcommit b059e06f58134ec9026f04ec6c42538cd922d01e[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 21:44:33 2024 -0400
+
+    LnkList.Prepend
+
+[33mcommit 18cb59b3e706ab0ae65390fa27d936816add670b[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 21:04:56 2024 -0400
+
+    Add LnkList
+
+[33mcommit 0f511caea38651f48eafa9c9cff5db512dc5f0e3[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 20:52:31 2024 -0400
+
+    LnkListTests.ToArray
+
+[33mcommit 5a2fe8d1812420a6a2fd8aeae7c390491a481e1c[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 20:11:17 2024 -0400
+
+    Use settings
+
+[33mcommit 708fc63263375f6bc58eefe5f63cf96a1ee09021[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 20:10:52 2024 -0400
+
+    Ignore sonarlint
+
+[33mcommit cd818fe138d60a4b4fad1e15ee1b54e183f45101[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 20:09:51 2024 -0400
+
+    Array Tests
+
+[33mcommit a694731555c422b010ea19f312c98cd9a1322c04[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 20:08:26 2024 -0400
+
+    Ignore
+
+[33mcommit 1ffce788c0cce9ffa4f0df88b41b7fa8c5216dc1[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 20:08:08 2024 -0400
+
+    Update gitignore
+
+[33mcommit c64c38787e9e3098f56ede7a00b8177a45aad439[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 19:26:04 2024 -0400
+
+    Rider files
+
+[33mcommit 57d0b6ea7a5fc1f6aec7a595c88d8fa89fffbcf3[m
+Author: “orodriguez” <omarjavier15@gmail.com>
+Date:   Mon Nov 25 19:25:57 2024 -0400
+
+    Create solution
+
+[33mcommit e7a77c06117bc4a6e2f23458fd804c3ed9f159f1[m
+Author: Omar J. Rodriguez <orodriguez@grubhub.com>
+Date:   Tue Nov 26 10:22:15 2024 -0400
+
+    Initial commit
