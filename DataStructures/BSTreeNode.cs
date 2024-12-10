@@ -44,15 +44,57 @@ public class BSTreeNode
 
     public bool Contains(int value)
     {
+        // O(1)
         if (value == Value)
             return true;
-
+        
+        // O(1)
         if (value < Value && Left == null)
             return false;
         
+        // O(log n)
         if (value < Value && Left != null)
             return Left.Contains(value);
         
         return Right != null && Right.Contains(value);
+    }
+
+    // O(log n)
+    public int Min() => Left?.Min() ?? Value;
+    
+    // O(log n)
+    public int Max() => Right?.Max() ?? Value;
+
+    public BSTreeNode? Delete(int value)
+    {
+        if (value < Value && Left != null)
+        {
+            Left = Left.Delete(value);
+            return this;
+        }
+        
+        if (value > Value && Right != null)
+        {
+            Right = Right.Delete(value);
+            return this;
+        }
+    
+        // Value == value
+        
+        if (Left == null && Right == null)
+            return null;
+
+        if (Left == null)
+            return Right;
+
+        if (Right == null)
+            return Left;
+
+        var minRight = Right.Min();
+        return new BSTreeNode(minRight)
+        {
+            Left = Left,
+            Right = Right.Delete(minRight)
+        };
     }
 }

@@ -121,7 +121,7 @@ public class TreeNodeTests
     }
 
     [Fact]
-    public void Search_PreOrderTraverse()
+    public void PreOrderTraverse()
     {
         var bardock = new TreeNode<string>("Bardock");
         var goku = bardock.Add("Goku");
@@ -149,7 +149,7 @@ public class TreeNodeTests
     }
     
     [Fact]
-    public void Search_PostOrderTraverse()
+    public void PostOrderTraverse()
     {
         var bardock = new TreeNode<string>("Bardock");
         var goku = bardock.Add("Goku");
@@ -177,7 +177,7 @@ public class TreeNodeTests
     }
     
     [Fact(Skip = "Homework")]
-    public void Search_LevelTraverse()
+    public void LevelTraverse()
     {
         var bardock = new TreeNode<string>("Bardock");
         var goku = bardock.Add("Goku");
