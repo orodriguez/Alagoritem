@@ -18,8 +18,8 @@ public class Graph<T> where T : notnull
             return new[] { prefix.Concat(new[] { start }) };
 
         return _edges[start]
-            .Where(node => !prefix.Contains(node))
-            .Select(node => Paths(prefix.Concat(new[] { start} ),node, end))
+            .Where(adj => !prefix.Contains(adj))
+            .Select(adj => Paths(prefix.Concat(new[] { start} ),adj, end))
             .SelectMany(paths => paths);
     }
 
